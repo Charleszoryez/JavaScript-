@@ -24,9 +24,7 @@ init: function () {
   var operandoB;
   var operacion;
 calculador.pantalla.textContent = "0"
-this.punto.addEventListener("click", function (e) {
-//colocas en la pantalla
-});
+
 function comprobarPunto(){
   var contenido = calculador.pantalla.textContent;
   var contenidob = contenido.indexOf(".");
@@ -74,27 +72,23 @@ this.cero.onclick = function(e){
 
 
 function numero(numero){
+
 var contenido = calculador.pantalla.textContent
 if (contenido == "0") {
 calculador.pantalla.textContent = numero
-}else {
-
-calculador.pantalla.textContent += numero
-
+}else {if (calculador.pantalla.innerHTML.length<8) {
+    calculador.pantalla.textContent += numero
 }
 }
+}
+
+
 
 
 function comprobarSigno(){
 var contenido = calculador.pantalla.textContent
 calculador.pantalla.textContent = parseFloat(contenido) * -1
 }
-
-function comprobarDigitos(){
-  var contenido = calculador.pantalla.textContent
-  calculador.pantalla.innerHTML = string(contenido).substr(0,8);
-}
-
 
 this.signo.onclick = function(e){
 comprobarSigno();
