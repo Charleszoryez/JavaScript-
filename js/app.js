@@ -17,11 +17,16 @@ division: document.getElementById("dividido"),
 on: document.getElementById("on"),
 igual: document.getElementById("igual"),
 pantalla: document.getElementById("display"),
+
 init: function () {
+  var operandoA;
+  var operandoB;
+  var operacion;
 calculador.pantalla.textContent = "0"
 this.punto.addEventListener("click", function (e) {
 //colocas en la pantalla
 });
+
 
 this.punto.onclick = function (e) {
 //colocas en la pantalla
@@ -54,11 +59,65 @@ this.ocho.onclick = function(e){
 this.nueve.onclick = function(e){
   calculador.pantalla.textContent += "9"
 }
-this.cero.onclick = function(e){
+this.cero.onclick = function(){
   calculador.pantalla.textContent += "0"
 }
 
-
+this.on.onclick = function(e){
+  resetear();
+}
+this.suma.onclick = function(e){
+  operandoA = calculador.pantalla.textContent;
+  operacion = "+";
+  limpiar();
+}
+this.resta.onclick = function(e){
+  operandoA = calculador.pantalla.textContent;
+  operacion = "-";
+  limpiar();
+}
+this.multiplicacion.onclick = function(e){
+  operandoA = calculador.pantalla.textContent;
+  operacion = "*";
+  limpiar();
+}
+this.division.onclick = function(e){
+  operandoA = calculador.pantalla.textContent;
+  operacion = "/";
+  limpiar();
+}
+this.igual.onclick = function(e){
+  operandoB = calculador.pantalla.textContent;
+  resolver();
+}
+function limpiar (){
+  calculador.pantalla.textContent = "";
+}
+function resetear(){
+  calculador.pantalla.textContent = "0";
+  operandoA = 0;
+  operandoB = 0;
+  operacion = "";
+}
+function resolver(){
+  var res=0;
+  switch (operacion) {
+    case "+":
+        res = parseFloat(operandoA) + parseFloat(operandoB);
+      break;
+    case "-":
+        res = parseFloat(operandoA) - parseFloat(operandoB);
+        break;
+    case "*":
+        res = parseFloat(operandoA) * parseFloat(operandoB);
+        break;
+    case "/":
+        res = parseFloat(operandoA) / parseFloat(operandoB);
+        break;
+      }
+      resetear();
+      calculador.pantalla.textContent = res;
+    }
 }
 }
 
