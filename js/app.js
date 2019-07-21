@@ -17,6 +17,7 @@ division: document.getElementById("dividido"),
 on: document.getElementById("on"),
 igual: document.getElementById("igual"),
 pantalla: document.getElementById("display"),
+signo: document.getElementById("sign"),
 
 init: function () {
   var operandoA;
@@ -26,41 +27,77 @@ calculador.pantalla.textContent = "0"
 this.punto.addEventListener("click", function (e) {
 //colocas en la pantalla
 });
-
+function comprobarPunto(){
+  var contenido = calculador.pantalla.textContent;
+  var contenidob = contenido.indexOf(".");
+  if (contenidob!=-1 ) {
+    contenido
+  }else {
+    calculador.pantalla.textContent += "."
+  }
+}
 
 this.punto.onclick = function (e) {
-//colocas en la pantalla
-calculador.pantalla.textContent += "."
+  comprobarPunto();
 }
 this.uno.onclick = function (e){
-  calculador.pantalla.textContent += "1"
+  numero("1")
 }
 this.dos.onclick = function(e){
-  calculador.pantalla.textContent += "2"
+  numero("2")
 }
 this.tres.onclick = function(e){
-  calculador.pantalla.textContent += "3"
+  numero("3")
 }
 this.cuatro.onclick = function(e){
-  calculador.pantalla.textContent += "4"
+  numero("4")
 }
 this.cinco.onclick = function(e){
-  calculador.pantalla.textContent += "5"
+  numero("5")
 }
 this.seis.onclick = function(e){
-  calculador.pantalla.textContent += "6"
+  numero("6")
 }
 this.siete.onclick = function(e){
-  calculador.pantalla.textContent += "7"
+  numero("7")
 }
 this.ocho.onclick = function(e){
-  calculador.pantalla.textContent += "8"
+  numero("8")
 }
 this.nueve.onclick = function(e){
-  calculador.pantalla.textContent += "9"
+  numero("9")
 }
-this.cero.onclick = function(){
-  calculador.pantalla.textContent += "0"
+this.cero.onclick = function(e){
+  numero("0")
+}
+
+
+
+function numero(numero){
+var contenido = calculador.pantalla.textContent
+if (contenido == "0") {
+calculador.pantalla.textContent = numero
+}else {
+
+calculador.pantalla.textContent += numero
+
+}
+}
+
+
+function comprobarSigno(){
+var contenido = calculador.pantalla.textContent
+calculador.pantalla.textContent = parseFloat(contenido) * -1
+}
+
+function comprobarDigitos(){
+  var contenido = calculador.pantalla.textContent
+  calculador.pantalla.innerHTML = string(contenido).substr(0,8);
+}
+
+
+this.signo.onclick = function(e){
+comprobarSigno();
 }
 
 this.on.onclick = function(e){
